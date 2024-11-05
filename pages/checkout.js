@@ -5,6 +5,11 @@ import { ProductsContext } from "../components/ProductsContext";
 export default function CheckoutPage() {
   const { selectedProducts, setSelectedProducts } = useContext(ProductsContext);
   const [productsInfos, setProductsInfos] = useState([]);
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
   useEffect(() => {
     const uniqIds = [...new Set(selectedProducts)];
     fetch("/api/products?ids=" + uniqIds.join(","))
@@ -66,11 +71,50 @@ export default function CheckoutPage() {
               </div>
             </div>
           ))}
-        <div>
-          <input className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2" type="text" placeholder="Street address, number" />
-          <input className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2" type="text" placeholder="City and postal code" />
-          <input className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2" type="text" placeholder="Name" />
-          <input className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2" type="email" placeholder="Email address"/>
+        <div className="mt-4">
+          <input
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2"
+            type="text"
+            placeholder="Street address, number"
+          />
+          <input
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+            className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2"
+            type="text"
+            placeholder="City and postal code"
+          />
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2"
+            type="text"
+            placeholder="Your name"
+          />
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="bg-gray-100 w-full rounded-lg px-4 py-2 mb-2"
+            type="email"
+            placeholder="Email address"
+          />
+        </div>
+
+        <div className="mt-4">
+          <div className="flex">
+            <h3 className="grow">Subtotal:</h3>
+            <h3>$123</h3>
+          </div>
+          <div className="flex">
+            <h3 className="grow">Delivery:</h3>
+            <h3>$123</h3>
+          </div>
+          <div className="flex">
+            <h3 className="grow">Total:</h3>
+            <h3>$123</h3>
+          </div>
         </div>
       </Layout>
     </div>
