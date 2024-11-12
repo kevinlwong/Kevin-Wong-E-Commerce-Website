@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Product from "../components/product";
+import Product from "../components/Product";
 import { initMongoose } from "@/lib/mongoose";
 import { useEffect } from "react";
 import { useState } from "react";
