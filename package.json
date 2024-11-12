@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export",
-    "deploy": "yarn export && gh-pages -d out"
+    "deploy": "yarn build && gh-pages -d out"
   },
   "dependencies": {
     "@babel/preset-react": "^7.25.9",
