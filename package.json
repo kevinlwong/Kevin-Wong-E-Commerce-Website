@@ -9,21 +9,28 @@
     "lint": "next lint",
     "deploy": "yarn build && gh-pages -d out"
   },
+  "babel": {
+    "presets": [
+      "next/babel"
+    ]
+  },
   "dependencies": {
-    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
     "autoprefixer": "^10.4.20",
     "micro": "^10.0.1",
+    "mongodb": "^6.13.1",
     "mongoose": "^8.8.0",
-    "next": "^15.0.2",
+    "next": "^15.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "stripe": "^17.3.1",
+    "stripe": "^17.7.0",
     "tailwind-scrollbar-hide": "^1.1.7",
     "use-local-storage-state": "^19.4.1"
   },
   "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^15.0.2",
+    "@babel/preset-react": "^7.26.3",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^15.0.4",
     "gh-pages": "^6.2.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"

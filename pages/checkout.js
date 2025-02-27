@@ -30,7 +30,7 @@ export default function CheckoutPage() {
     }
   }
 
-  const deliveryPrice = 5;
+  const deliveryPrice = 5; //try 7.25% of sales because that is what it is in CA
   let subtotal = 0;
   if (selectedProducts?.length) {
     for (let id of selectedProducts) {
@@ -38,7 +38,7 @@ export default function CheckoutPage() {
       subtotal += price;
     }
   }
-  const total = subtotal + deliveryPrice;
+  const total = (subtotal + deliveryPrice).toFixed(2);
 
   return (
     <Layout>
@@ -125,7 +125,7 @@ export default function CheckoutPage() {
         <div className="mt-4">
           <div className="flex my-3 ">
             <h3 className="grow font-bold text-gray-400">Subtotal:</h3>
-            <h3 className="font-bold">${subtotal}</h3>
+            <h3 className="font-bold">${subtotal.toFixed(2)}</h3>
           </div>
           <div className="flex my-3 ">
             <h3 className="grow font-bold text-gray-400">Delivery:</h3>

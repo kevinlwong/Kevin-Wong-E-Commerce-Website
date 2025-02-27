@@ -26,6 +26,11 @@ export default function Home({ products }) {
         placeholder="Search for products..."
         className="bg-gray-100 w-full py-2 px-4 rounded-xl"
       />
+      <div className="title">
+        <h1 className="font-sans font-bold text-7xl mt-5 mb-5 ">
+            Kevin's E-Store
+        </h1>
+      </div>
       <div>
         {categoriesNames.map((categoryName) => (
           <div key={categoryName}>
