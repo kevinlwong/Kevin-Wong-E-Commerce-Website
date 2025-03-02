@@ -28,7 +28,7 @@ export default function Home({ products }) {
       />
       <div className="title">
         <h1 className="font-sans font-bold text-7xl mt-5 mb-5 ">
-            Kevin's E-Store
+            Kevin&apos;s E-Store
         </h1>
       </div>
       <div>

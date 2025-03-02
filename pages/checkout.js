@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../components/ProductsContext";
+import Image from "next/image";
 
 export default function CheckoutPage() {
   const { selectedProducts, setSelectedProducts } = useContext(ProductsContext);
@@ -30,7 +31,6 @@ export default function CheckoutPage() {
     }
   }
 
-  const deliveryPrice = 5; //try 7.25% of sales because that is what it is in CA
   let subtotal = 0;
   if (selectedProducts?.length) {
     for (let id of selectedProducts) {
@@ -38,6 +38,8 @@ export default function CheckoutPage() {
       subtotal += price;
     }
   }
+  const deliveryRate = 0.0725; //try 7.25% of sales because that is what it is in CA
+  const deliveryPrice = (deliveryRate * subtotal);
   const total = (subtotal + deliveryPrice).toFixed(2);
 
   return (
@@ -52,7 +54,15 @@ export default function CheckoutPage() {
           return (
             <div className="flex mb-5" key={productInfo._id}>
               <div className="bg-gray-100 p-3 rounded-xl shrink-0">
-                <img className="w-24" src={productInfo.picture} alt="" />
+                {/* <img className="w-24" src={productInfo.picture} alt="" /> */}
+                <Image
+                  className="w-24"
+                  src={productInfo.picture}
+                  alt="Product Image"
+                  objectFit="cover"
+                  width={96}
+                  height={96}
+                />
               </div>
               <div className="pl-4">
                 <h3 className="font-bold text-lg">{productInfo.name}</h3>
@@ -128,8 +138,8 @@ export default function CheckoutPage() {
             <h3 className="font-bold">${subtotal.toFixed(2)}</h3>
           </div>
           <div className="flex my-3 ">
-            <h3 className="grow font-bold text-gray-400">Delivery:</h3>
-            <h3 className="font-bold">${deliveryPrice}</h3>
+            <h3 className="grow font-bold text-gray-400">Tax and Delivery Fees:</h3>
+            <h3 className="font-bold">${deliveryPrice.toFixed(2)}</h3>
           </div>
           <div className="flex my-3 border-t pt-3 border-dashed border-emerald-500">
             <h3 className="grow font-bold text-gray-400">Total:</h3>
